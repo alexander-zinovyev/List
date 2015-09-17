@@ -6,14 +6,7 @@
 
 List::List() : first(nullptr) { }
 
-List::~List() {
-    Element *temp = this->begin(), *nextElement;
-    while (temp != nullptr) {
-        nextElement = temp->next();
-        delete temp;
-        temp = nextElement;
-    }
-}
+List::~List() { }
 
 Element* List::begin() {
     return this->first;
@@ -68,7 +61,6 @@ void List::erase(Element *element) {
                 this->first = element->next();
 
             element->erase();
-            delete element;
             return;
         }
         temp = temp->next();
@@ -77,16 +69,14 @@ void List::erase(Element *element) {
 
 void List::erase(int position, int count) {
     Element *temp = this->begin();
-    for (int i = 1; i < position && temp != nullptr; i++)
+    for (int i = 0; i < position && temp != nullptr; i++)
         temp = temp->next();
 
     while (count-- && temp != nullptr) {
-        Element *nextElement = temp->next();
         if (temp == this->begin())
-            this->first = nextElement;
+            this->first = temp->next();
 
         temp->erase();
-        delete temp;
-        temp = nextElement;
+        temp = temp->next();
     }
 }
