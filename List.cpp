@@ -12,6 +12,20 @@ Element* List::begin() {
     return this->first;
 }
 
+bool List::empty() {
+    return (this->first == nullptr);
+}
+
+int List::size() {
+    int size = 0;
+    Element *temp = this->begin();
+    while (temp != nullptr) {
+        size++;
+        temp = temp->next();
+    }
+    return size;
+}
+
 void List::printAll() {
     Element *element = this->begin();
     while (element != nullptr) {

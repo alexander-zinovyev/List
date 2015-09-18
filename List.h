@@ -20,6 +20,9 @@ public:
 
     void erase(int position, int count = 1);
     void erase(Element *element);
+
+    bool empty();
+    int size();
 private:
     Element *first;
 };

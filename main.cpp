@@ -26,6 +26,8 @@ int main() {
     std::cout << "Printing all list objects using List::printAll()" << std::endl;
     list.printAll();
 
+    std::cout << "List size: " << list.size() << std::endl;
+
     //manual iterating through list
     std::cout << "Printing all list objects manually" << std::endl;
     for (Element *temp = list.begin(); temp != nullptr; temp = temp->next())
@@ -36,6 +38,8 @@ int main() {
     list.erase(string);
 
     list.printAll();
+
+    std::cout << "List size: " << list.size() << std::endl;
 
     delete integerElement;
     delete doubleElement;
