@@ -23,7 +23,7 @@ void Element::setNext(Element *element) {
     this->nextElement = element;
 }
 
-void Element::erase() {
+void Element::unlink() {
     if (this->previous() != nullptr)
         this->previous()->setNext(this->next());
     if (this->next() != nullptr)

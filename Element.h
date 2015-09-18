@@ -19,7 +19,7 @@ public:
     void setPrevious(Element *);
     void setNext(Element *);
 
-    void erase();
+    void unlink();
     
     virtual void print() = 0;
 private:

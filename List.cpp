@@ -34,20 +34,29 @@ void List::printAll() {
     }
 }
 
+/*
+ * Position begins with 0
+ */
 void List::insert(int position, Element *element) {
-    Element *temp = this->begin();
-    for (int i = 1; i < position && temp != nullptr; i++)
-        temp = temp->next();
+    Element *temp = this->begin(), *prev = nullptr;
+    for (int i = 0; i < position && temp != nullptr; i++) {
+        prev = temp;
+        temp = prev->next();
+    }
 
-    if (temp == nullptr) {
+    if (prev == nullptr) {
+        if (this->begin() != nullptr) {
+            element->setNext(this->begin());
+            this->begin()->setPrevious(element);
+        }
         this->first = element;
     } else {
-        if (temp->next() != nullptr) {
-            temp->next()->setPrevious(element);
-            element->setNext(temp->next());
-        }
-        temp->setNext(element);
-        element->setPrevious(temp);
+        element->setNext(prev->next());
+        if (prev->next() != nullptr)
+            prev->next()->setPrevious(element);
+
+        element->setPrevious(prev);
+        prev->setNext(element);
     }
 }
 
@@ -74,7 +83,7 @@ void List::erase(Element *element) {
             if (element == this->begin())
                 this->first = element->next();
 
-            element->erase();
+            element->unlink();
             return;
         }
         temp = temp->next();
@@ -90,7 +99,7 @@ void List::erase(int position, int count) {
         if (temp == this->begin())
             this->first = temp->next();
 
-        temp->erase();
+        temp->unlink();
         temp = temp->next();
     }
 }
