@@ -103,3 +103,7 @@ void List::erase(int position, int count) {
         temp = temp->next();
     }
 }
+
+void List::operator<<(Element *element) {
+    this->push_back(element);
+}

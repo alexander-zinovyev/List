@@ -23,6 +23,8 @@ public:
 
     bool empty();
     int size();
+
+    void operator<<(Element *element);
 private:
     Element *first;
 };

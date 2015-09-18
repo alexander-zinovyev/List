@@ -21,7 +21,7 @@ int main() {
     list.insert(1, someAnotherInteger);
 
     String *string = new String("one more test string");
-    list.push_back(string);
+    list << string;
 
     std::cout << "Printing all list objects using List::printAll()" << std::endl;
     list.printAll();
